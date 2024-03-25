@@ -1,6 +1,7 @@
 import RestroCard from "./RestroCard";
 import { useEffect, useState } from "react";
 import ShimmerUi from "./ShimmerUi";
+import { Link } from "react-router-dom";
 const Body = () => {
   const [restorent, setRestorent] = useState([]);
   const [filterrestorent, setFilterRestorent] = useState([]);
@@ -61,7 +62,8 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filterrestorent.map((card, index) => {
-          return <RestroCard key={index} details={card} />;
+            console.log("card",card)
+          return <Link to={"/restaurants/"+card.info.id}><RestroCard key={index} details={card} /></Link>;
         })}
       </div>
     </div>

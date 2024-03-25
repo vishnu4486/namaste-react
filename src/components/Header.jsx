@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LOGO_URL } from "../utils/constan";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [buttonTitle, setButtonTitle] = useState("Login");
+
+  useEffect(()=>{
+    console.log("Call useEffect");
+  },[])
   return (
     <div className="header">
       <div className="logo">
@@ -10,13 +15,14 @@ const Header = () => {
       </div>
       <div className="navitem">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contacts us</li>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/about" >About Us</Link></li>
+          <li><Link to="/contact">Contacts us</Link></li>
           <li>Card</li>
           <button
             onClick={() => {
               setButtonTitle(buttonTitle === "Login" ? "logout" : "Login");
+              console.log("change state value");
             }}
           >
             {buttonTitle}
